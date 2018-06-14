@@ -13,5 +13,6 @@ public class Statisch {
     public static int [] Spiele10 = {2,2,2,2,2,2,2,2,2,2}; //1 heist erster gewonnen, 2 heist zweiter spieler gewonnen
     public static int prozentgew = 0;
     public static int [] AnzahlStreichholz = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-    
+    public static int zufzahl = 0;
+    public static int lauf = 0;
 }

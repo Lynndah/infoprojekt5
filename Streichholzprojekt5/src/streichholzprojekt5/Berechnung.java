@@ -20,8 +20,10 @@ public class Berechnung {
       /*Zufallszahl von 5-100 programmiert
       i = Anfangszahl der Streichhölzer
       */
+      int zufzahl = i;
+      Statisch.zufzahl = zufzahl;
       int lauf = 0;
-      
+      Statisch.lauf = lauf;
       
       
         System.out.println(i);
@@ -89,7 +91,7 @@ public class Berechnung {
             Statisch.AnzahlStreichholz[lauf] = 2;
                lauf++;
         } 
-            System.out.println("Ich bin der 2. Spieler und habe verloren.");
+            System.out.println("Ich bin der 1. Spieler und habe gewonnen.");
             Statisch.Spiele10[h]=1;
            
             
@@ -153,7 +155,7 @@ public class Berechnung {
             Statisch.AnzahlStreichholz[lauf] = 1;
                lauf++;
         }
-            System.out.println("Ich bin der 1.Spieler und habe verloren.");
+            System.out.println("Ich bin der 2.Spieler und habe gewonnen.");
         }
        /* computer muss nach obigen Bedingungen die Anzahl der Streichhölzer 
        abziehen
@@ -167,7 +169,7 @@ public class Berechnung {
 
        //Spiel ist beendet
          
-            
+        
         
     }
     
