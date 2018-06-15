@@ -14,5 +14,7 @@ public class Statisch {
     public static int prozentgew = 0;
     public static int [] AnzahlStreichholz = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
     public static int zufzahl = 0;
-    public static int lauf = 0;
+    public static int x=0;
+    public static int y=0;
+    public static int laufober = 0;
 }

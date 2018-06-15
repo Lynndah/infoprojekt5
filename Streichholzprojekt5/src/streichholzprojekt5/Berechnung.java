@@ -23,7 +23,7 @@ public class Berechnung {
       int zufzahl = i;
       Statisch.zufzahl = zufzahl;
       int lauf = 0;
-      Statisch.lauf = lauf;
+      
       
       
         System.out.println(i);
@@ -54,7 +54,7 @@ public class Berechnung {
            else if (m==2) {
                int k=1;
                i=i-k;
-               Statisch.AnzahlStreichholz[lauf] = 2;
+               Statisch.AnzahlStreichholz[lauf] = 1;
                lauf++;
                
                 System.out.println(k+" Ich kann gewinnen");
@@ -62,7 +62,7 @@ public class Berechnung {
            else if (m==3) {
                int k=2;
                i=i-k;
-               Statisch.AnzahlStreichholz[lauf] = 1;
+               Statisch.AnzahlStreichholz[lauf] = 2;
                lauf++;
                 System.out.println(k+" Ich kann gewinnen");
            } //wenn der Rest gleich 3 ist, müssen 2 Streichhölzer weggenommen werden
@@ -88,7 +88,7 @@ public class Berechnung {
         else if (i==1) {
             int k=1;
             i=i-k;
-            Statisch.AnzahlStreichholz[lauf] = 2;
+            Statisch.AnzahlStreichholz[lauf] = 1;
                lauf++;
         } 
             System.out.println("Ich bin der 1. Spieler und habe gewonnen.");

@@ -5,6 +5,9 @@
  */
 package streichholzprojekt5;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
+
 /**
  *
  * @author lynnbo
@@ -33,10 +36,10 @@ public class Oberflaeche extends javax.swing.JFrame {
         ;
         jButton1 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -68,6 +71,15 @@ public class Oberflaeche extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("jButton2");
+
+        jButton3.setText("jButton3");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -83,17 +95,32 @@ public class Oberflaeche extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(230, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jButton2)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jButton2)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -104,6 +131,9 @@ public class Oberflaeche extends javax.swing.JFrame {
         Berechnung.berechnen();
         int prozentgew=Statisch.prozentgew;
         jTextField1.setText(""+prozentgew+"%");
+        
+        
+        
     }//GEN-LAST:event_jButton1MouseClicked
 
     
@@ -114,6 +144,74 @@ public class Oberflaeche extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // Tnach vorne
+        
+        Graphics2D g = (Graphics2D)jPanel1.getGraphics();
+        
+        int h = jPanel1.getHeight();
+        int w = jPanel1.getWidth();
+        
+        int zufzahl = Statisch.zufzahl;
+        
+        int lauf = Statisch.laufober;
+        
+        int reihen=(zufzahl-(zufzahl%10))/10;
+        int letztesp = zufzahl%10;
+        
+        int x=Statisch.x;
+        int y=Statisch.y;
+        
+        
+        h=h/10;
+        w=w/10;
+        
+        g.setColor(Color.red);
+        
+        if (lauf==0){
+            for (int i = 0; i < reihen; i++) {
+                for (int j = 0; j < 10; j++) {
+                    g.fillRect(j*w+w/3, i*h+h/5, w*2/3, h*4/5);
+                }
+            }
+            for (int i = 0; i < letztesp; i++) {
+                g.fillRect(i*w+w/3, reihen*h+h/5, w*2/3, h*4/5);
+            }
+            Statisch.y=reihen+1;
+            Statisch.x=letztesp;
+            x=Statisch.x-1;
+            y=Statisch.y-1;
+        } else {
+            int anzahl = Statisch.AnzahlStreichholz[lauf-1];
+            for (int i = 0; i < anzahl; i++) {
+               if (x==0){
+                   x=10;
+               }
+               g.setColor(Color.blue);
+               g.fillRect(x*w, y*h, w, h); 
+               if (x!=1){
+                   x--;
+               } 
+               
+               else {
+                   
+                   x=9;
+                   y--;
+               }
+               
+            
+            }
+           
+            
+        }
+        lauf++;
+        Statisch.laufober=lauf;
+        Statisch.x=x;
+        Statisch.y=y;
+        
+        System.out.println(""+zufzahl+ " "+x+" "+y);
+    }//GEN-LAST:event_jButton3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -152,6 +250,8 @@ public class Oberflaeche extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
