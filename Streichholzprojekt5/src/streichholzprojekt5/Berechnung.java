@@ -194,6 +194,7 @@ public class Berechnung {
         for (int z = 0; z < 10; z++) { //Resetet die 10 Spiele-Werte im array
             Statisch.Spiele10[z]=2;
         }
+        Statisch.laufober=0;
         
     }
 }

@@ -36,7 +36,6 @@ public class Oberflaeche extends javax.swing.JFrame {
         ;
         jButton1 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -64,19 +63,22 @@ public class Oberflaeche extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setText("jTextField1");
+        jTextField1.setText("prozentualer Gewinn");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("jButton2");
-
-        jButton3.setText("jButton3");
+        jButton3.setText("nächster Zug");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton3MouseClicked(evt);
+            }
+        });
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -94,15 +96,10 @@ public class Oberflaeche extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(230, Short.MAX_VALUE))
+                .addContainerGap(198, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jButton2)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,11 +113,6 @@ public class Oberflaeche extends javax.swing.JFrame {
                     .addComponent(jButton1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jButton2)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -128,11 +120,21 @@ public class Oberflaeche extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TMausklick btn 1
+        Graphics2D g = (Graphics2D)jPanel1.getGraphics();
+        
+        int h = jPanel1.getHeight();
+        int w = jPanel1.getWidth();
+        
         Berechnung.berechnen();
         int prozentgew=Statisch.prozentgew;
         jTextField1.setText(""+prozentgew+"%");
         
-        
+        System.out.println(""+Statisch.zufzahl);
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                g.clearRect(j*w, i*h, w, h);
+            }
+        }
         
     }//GEN-LAST:event_jButton1MouseClicked
 
@@ -163,7 +165,9 @@ public class Oberflaeche extends javax.swing.JFrame {
         int x=Statisch.x;
         int y=Statisch.y;
         
-        
+        if (x==0){
+            x=9;
+        }
         h=h/10;
         w=w/10;
         
@@ -180,17 +184,18 @@ public class Oberflaeche extends javax.swing.JFrame {
             }
             Statisch.y=reihen+1;
             Statisch.x=letztesp;
-            x=Statisch.x-1;
-            y=Statisch.y-1;
+            
+                x=Statisch.x-1;
+                y=Statisch.y-1;
+           
+            
         } else {
             int anzahl = Statisch.AnzahlStreichholz[lauf-1];
             for (int i = 0; i < anzahl; i++) {
-               if (x==0){
-                   x=10;
-               }
                g.setColor(Color.blue);
                g.fillRect(x*w, y*h, w, h); 
-               if (x!=1){
+               
+               if (x!=0){
                    x--;
                } 
                
@@ -203,7 +208,7 @@ public class Oberflaeche extends javax.swing.JFrame {
             
             }
            
-            
+            System.out.println(""+x+" "+y);
         }
         lauf++;
         Statisch.laufober=lauf;
@@ -211,7 +216,12 @@ public class Oberflaeche extends javax.swing.JFrame {
         Statisch.y=y;
         
         System.out.println(""+zufzahl+ " "+x+" "+y);
+        
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -250,7 +260,6 @@ public class Oberflaeche extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
